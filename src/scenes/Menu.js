@@ -15,7 +15,7 @@ class Menu extends Phaser.Scene {
         this.add.text(20, 20, "rocket patrol menu");
         
         ////CHECK THIS VALUE HERE
-        this.scene.start(Play);
+        this.scene.start("playScene");
 
 
     }
