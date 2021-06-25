@@ -41,9 +41,15 @@ class Play extends Phaser.Scene {
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
 
-        this.anims.create({key: 'explode', 
-                            frames: this.anims.generateFrameNumbers('explosion', {start: 0, end: 9, first: 0}), 
-                            frameRate:30});
+        this.anims.create({
+            key: 'explode', 
+            frames: this.anims.generateFrameNumbers('explosion', {
+                start: 0, 
+                end: 9, 
+                first: 0
+                }), 
+            frameRate: 30
+            });
 
 
         this.p1Score = 0;
@@ -120,7 +126,7 @@ class Play extends Phaser.Scene {
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0,0);
         boom.anims.play('explode');
         this.sound.play('sfx_explosion');
-        boom.on('animationcompete', () => {
+        boom.on('animationcomplete', () => {
             ship.reset();
             ship.alpha = 1;
             boom.destroy();
