@@ -15,6 +15,9 @@ let borderPadding = borderUISize / 3;
 //reserve keyboard vars
 let keyF, keyR, keyLEFT, keyRIGHT;
 
+//bugs
+//audio restarts when going back to menu
+
 
 // point tally
 // add own music                                                                5

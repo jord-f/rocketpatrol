@@ -11,6 +11,9 @@ class Play extends Phaser.Scene {
         this.load.image('rocket', './assets/rocket.png');
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
+        this.load.image('starfield2', './assets/starfield2.png');
+
+        this.load.audio('bgm', './assets/rpremix.mp3');
 
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
 
@@ -19,7 +22,9 @@ class Play extends Phaser.Scene {
     create(){
         this.add.text(20, 20, "rocket patrol play");
 
+        //place starfields
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0,0);
+        this.starfield2 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'starfield2').setOrigin(0,0);
 
         //green ui bg
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize*2, 0x00FF00).setOrigin(0,0);
@@ -61,6 +66,10 @@ class Play extends Phaser.Scene {
             align:'right',
             padding: {top: 5, bottom: 5},
             fixedWidth: 100
+
+
+
+            
         }
 
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
@@ -75,18 +84,30 @@ class Play extends Phaser.Scene {
             this.gameOver = true;
         }, null, this);
 
+
+        this.bgm = this.sound.add('bgm', { loop: true });
+
+        this.bgm.play();
+
     }
 
     update(){
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)){
+            this.bgm.stop();
             this.scene.restart();
+            
         }
 
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)){
+            this.bgm.stop();
             this.scene.start("menuScene");
         }
 
         this.starfield.tilePositionX -= 4;
+        this.starfield2.tilePositionX -= 4 * 1.5;
+        this.starfield2.tileScaleX = 4;
+        this.starfield2.tileScaleY = 4;
+
         if (!this.gameOver){
             this.p1Rocket.update();
             this.ship01.update();
@@ -128,7 +149,7 @@ class Play extends Phaser.Scene {
 
         //adapted from https://www.html5gamedevs.com/topic/37506-pick-random-element/    
         this.sound.play(Phaser.Math.RND.pick(['hit1', 'hit2', 'hit3', 'hit4']));         
-        
+
         boom.on('animationcomplete', () => {
             ship.reset();
             ship.alpha = 1;
