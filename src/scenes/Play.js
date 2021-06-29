@@ -125,16 +125,23 @@ class Play extends Phaser.Scene {
         ship.alpha = 0; //hide ship
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0,0);
         boom.anims.play('explode');
-        this.sound.play('sfx_explosion');
+
+        //adapted from https://www.html5gamedevs.com/topic/37506-pick-random-element/    
+        this.sound.play(Phaser.Math.RND.pick(['hit1', 'hit2', 'hit3', 'hit4']));         
+        
         boom.on('animationcomplete', () => {
             ship.reset();
             ship.alpha = 1;
             boom.destroy();
+            
+        //adapted from https://www.html5gamedevs.com/topic/37506-pick-random-element/    
+        this.sound.play(Phaser.Math.RND.pick(['hit1', 'hit2', 'hit3', 'hit4']));             
         });
 
         //add score and repaint score display
         this.p1Score +=ship.points;
         this.scoreLeft.text = this.p1Score;
+        
     }
 
 }
