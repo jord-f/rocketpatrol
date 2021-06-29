@@ -27,3 +27,4 @@ let keyF, keyR, keyLEFT, keyRIGHT;
 // particle emitter and particle explosion -                                    20
 // Allow the player to control the Rocket after it's fired                      5
 // new title screen -                                                           10
+// new spaceship type that's smaller, faster, worth more points -               20
