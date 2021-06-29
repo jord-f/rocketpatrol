@@ -16,10 +16,12 @@ let borderPadding = borderUISize / 3;
 let keyF, keyR, keyLEFT, keyRIGHT;
 
 //bugs
-//audio restarts when going back to menu
+
 
 
 // point tally
 // add own music                                                                5
 // 4 new explosion sfx with random -                                            10
 // Randomize each spaceship's movement direction at the start of each play      5
+// parallax scrolling -                                                         10
+// particle emitter and particle explosion -                                    20
