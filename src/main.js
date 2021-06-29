@@ -26,3 +26,4 @@ let keyF, keyR, keyLEFT, keyRIGHT;
 // parallax scrolling -                                                         10
 // particle emitter and particle explosion -                                    20
 // Allow the player to control the Rocket after it's fired                      5
+// new title screen -                                                           10
