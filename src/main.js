@@ -14,3 +14,9 @@ let borderPadding = borderUISize / 3;
 
 //reserve keyboard vars
 let keyF, keyR, keyLEFT, keyRIGHT;
+
+
+// point tally
+// add own music                                                                5
+// 4 new explosion sfx with random -                                            10
+// Randomize each spaceship's movement direction at the start of each play      5
