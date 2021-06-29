@@ -15,8 +15,8 @@ let borderPadding = borderUISize / 3;
 //reserve keyboard vars
 let keyF, keyR, keyLEFT, keyRIGHT;
 
-//bugs
 
+//Jordan Fickel - Rocket Patrol Remix - 06/28/2021      ~8 hrs
 
 
 // point tally
@@ -28,3 +28,5 @@ let keyF, keyR, keyLEFT, keyRIGHT;
 // Allow the player to control the Rocket after it's fired                      5
 // new title screen -                                                           10
 // new spaceship type that's smaller, faster, worth more points -               20
+
+//          total points                85
