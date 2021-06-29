@@ -144,6 +144,18 @@ class Play extends Phaser.Scene {
 
     shipExplode(ship){
         ship.alpha = 0; //hide ship
+
+        //particles
+        //particles adapted from https://phaser.io/examples/v3/view/game-objects/particle-emitter/create-emitter
+        var particles = this.add.particles('spaceship');
+        this.emitter = particles.createEmitter();
+
+        this.emitter.setPosition(ship.x, ship.y);
+        this.emitter.setSpeed(400);
+        this.emitter.setBlendMode(Phaser.BlendModes.ADD);
+
+
+
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0,0);
         boom.anims.play('explode');
 
@@ -153,10 +165,9 @@ class Play extends Phaser.Scene {
         boom.on('animationcomplete', () => {
             ship.reset();
             ship.alpha = 1;
+            particles.destroy();
             boom.destroy();
-            
-        //adapted from https://www.html5gamedevs.com/topic/37506-pick-random-element/    
-        this.sound.play(Phaser.Math.RND.pick(['hit1', 'hit2', 'hit3', 'hit4']));             
+           
         });
 
         //add score and repaint score display
